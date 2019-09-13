@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 #django can generate its own html user creation form which handles all the validations(regex etc.)
 from django.contrib import messages #create flash messages
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
 def register(request):
@@ -19,3 +20,7 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
