@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %} 
+<!-- you can reference the template of another app -->
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            {% csrf_token %} <!--this token prevents xss attacks. stands for cross site request forgery-->
+            <fieldset class="form-group"> <!--groups releated elements in a form-->
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form.as_p }} <!--simple as that mention the variable here-->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="#">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}
