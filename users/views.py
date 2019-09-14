@@ -16,7 +16,7 @@ def register(request):
             # messages.info
             # messages.DEBUG
             message = messages.success(request, f'Account created for {username}!')
-            return redirect('blog-home')
+            return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
