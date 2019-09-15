@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 def home(request):
@@ -22,5 +23,18 @@ def home(request):
         'posts': Post.objects.all()
     }
     return render(request, 'blog/home.html', context)
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/home.html' #<app>/model_<viewtype.html>
+    #in the home() view above we are calling the post objects as 'posts' in
+    #the context. but by default a ListView will call that variable object_list
+    #instead. we can change that by adding one more variable
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+class PostDetailView(DetailView):
+    model = Post
+
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
