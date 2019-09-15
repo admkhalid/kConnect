@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %} 
+{% load crispy_forms_tags %}
+<!-- you can reference the template of another app -->
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            {% csrf_token %} <!--this token prevents xss attacks. stands for cross site request forgery-->
+            <fieldset class="form-group"> <!--groups releated elements in a form-->
+                <legend class="border-bottom mb-4">Blog Post</legend>
+                {{ form|crispy }} <!--simple as that mention the variable here. as_p will render the form in <p> tags. just to make it look good-->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
