@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 def home(request):
@@ -35,6 +35,12 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ['title', 'content']
+    #this class expects the template's name to be <modelname>_form.html.
+    #in our case post_form.html
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
