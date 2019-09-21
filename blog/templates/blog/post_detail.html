@@ -5,11 +5,18 @@
         <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-2" href="#">{{ object.author }}</a>
-                <small class="text-muted">{{ object.date_posted }}</small>
-                <!-- date filters: https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#date -->
+                <small class="text-muted">{{ object.date_posted }}</small> <!--date formatting |date:"F d, Y"-->
+                {% if object.author == user %}
+                {% endif %}
             </div>
             <h2 class="article-title">{{ object.title }}</h2>
             <p class="article-content">{{ object.content }}</p>
         </div>
     </article>
+    {% if user.is_authenticated %}
+        {% if user == object.author %}
+            <a class="btn btn-secondary" href="{% url 'post-update' object.id %}">Update</a>
+            <a class="btn btn-outline-danger" href=" {% url 'post-delete' object.id %} ">Delete Post</a>
+        {% endif %}
+    {% endif %}
 {% endblock %}

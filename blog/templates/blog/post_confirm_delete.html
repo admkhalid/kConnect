@@ -1,17 +1,16 @@
 {% extends 'blog/base.html' %} 
-{% load crispy_forms_tags %}
-<!-- you can reference the template of another app -->
 {% block content %}
     <div class="content-section">
         {% if request.user.is_authenticated %}
             <form method="post">
                 {% csrf_token %} <!--this token prevents xss attacks. stands for cross site request forgery-->
                 <fieldset class="form-group"> <!--groups releated elements in a form-->
-                    <legend class="border-bottom mb-4">Blog Post</legend>
-                    {{ form|crispy }} <!--simple as that mention the variable here. as_p will render the form in <p> tags. just to make it look good-->
+                    <legend class="border-bottom mb-4">Delete Post</legend>
+                    <h2>Are you sure you wanna delete this post? {{ object.title }} </h2>
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Post</button>
+                    <button class="btn btn-outline-danger btn-sm mt-1 mb-1" type="submit">Yeah, Delete It!</button>
+                    <a class="btn btn-outline-secondary" href=" {% url 'post-detail' object.id %} ">Cancel</a>
                 </div>
             </form>
         {% else %}
