@@ -22,6 +22,7 @@ class PostListView(ListView):
     # instead. we can change that by adding one more variable
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 5
 
 
 class PostDetailView(DetailView):
