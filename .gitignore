@@ -2,3 +2,5 @@ posts.json
 users/__pycache__/models.cpython-37.pyc
 users/__pycache__/models.cpython-37.pyc
 blog/__pycache__/views.cpython-37.pyc
+blog/__pycache__/views.cpython-37.pyc
+users/__pycache__/models.cpython-37.pyc
