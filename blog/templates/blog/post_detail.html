@@ -4,7 +4,7 @@
         <img src="{{object.author.profile.image.path}}" alt="" class="rounded-circle article-image">
         <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="#">{{ object.author }}</a>
+                <a class="mr-2" href="{% url 'user-posts' object.post.author.username  %}">{{ object.author }}</a>
                 <small class="text-muted">{{ object.date_posted }}</small> <!--date formatting |date:"F d, Y"-->
                 {% if object.author == user %}
                 {% endif %}
