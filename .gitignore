@@ -1,6 +1,8 @@
 posts.json
-users/__pycache__/models.cpython-37.pyc
-users/__pycache__/models.cpython-37.pyc
-blog/__pycache__/views.cpython-37.pyc
-blog/__pycache__/views.cpython-37.pyc
-users/__pycache__/models.cpython-37.pyc
+users/__pycache__/
+users/migrations/__pycache__/
+blog/__pycache__/
+blog/migrations/__pycache__/
+kConnect/__pycache__/
+notes/
+/.gitignore

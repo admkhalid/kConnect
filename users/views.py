@@ -9,13 +9,16 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save() #yeah simple as that. the user created and saved in the database
+            #the password is also hashed in before commiting to the database
             username = form.cleaned_data.get('username') #cleaned_data is a dictionary
             # messages.success
             # messages.error
             # messages.warning
             # messages.info
             # messages.DEBUG
-            message = messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Account created for {username}!')
+            #no need to the send the messages argument to the redirect method
+            #it's an attribute which is part of the request
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -32,7 +35,7 @@ def profile(request):
         if u_form.is_valid and p_form.is_valid:
             u_form.save()
             p_form.save()
-            message = messages.success(request, f'Profile Updated!')
+            messages.success(request, f'Profile Updated!')
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance = request.user)
